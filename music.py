@@ -9,8 +9,9 @@ def music_data(file, search):
         line1 = fp.readline() # line: album, artist, year
         line1 = line1.strip().split(",")
         for line in fp:
-            print(line)
-        print(line1)
+            if search.lower() in line.lower():
+                line = line.strip().split(",")
+                print(f"{line[0]} by {line[1]}\nReleased in {line[2]}")
 
 if __name__ == '__main__':
     print(music_data('music1.csv', 'rosie'))
